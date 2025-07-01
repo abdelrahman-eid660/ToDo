@@ -61,10 +61,10 @@ function add_todo(){
             <i class="fa-solid fa-trash-can float-end delete" style="color:red;"></i>
             <i class="fa-solid fa-check float-end mx-3 check" style="color:#04ff00;"></i>
             </div>`
-            big_list.style.background = `rgb(${randNumber1},${randNumber2},${randNumber3})`
-            input_value = ""
-            total_todo.innerHTML =`Total Todo : ${list_todo.childElementCount}`
-            check_alert()
+            big_list.style.background = `rgb(${randNumber1},${randNumber2},${randNumber3})`;
+            todo_input.value = "";
+            total_todo.innerHTML =`Total Todo : ${list_todo.childElementCount}`;
+            check_alert();
         }
 //======================== ADD Button ===============================
 todo_btn.addEventListener('click',add_todo)
