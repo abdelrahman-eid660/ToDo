@@ -86,6 +86,7 @@ clear.addEventListener("click",()=>{
     let result = confirm('Are You Sure')
     if(result == true){
         list_todo.innerHTML = ""
+        message.innerHTML = ""
         total_todo.innerHTML =`Total Todo : ${list_todo.childElementCount}`
         total_done.innerHTML = `Total Done : ${document.querySelectorAll('.done').length}`
         check_alert()
