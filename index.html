@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/all.min.css">
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/main.css">
+        <title>ToDo App</title>
+    </head>
+    <body>
+        <div class="todo">
+            <h3>Todo App <i id="change_mood"
+                    class="fa-solid fa-moon float-end "></i> </h3>
+            <div class="form-group">
+                <input type="text" id="todo_input"
+                    placeholder="Add Your New Todo">
+                <button id="todo_btn" class="btn">+</button>
+                <h6 id="message"></h6>
+            </div>
+
+            <div class="big_list">
+                <div id="alert_empty" class="alert m-0  alert-danger"
+                    role="alert">
+                    No Tasks to Do
+                </div>
+                <div class="list-todo">
+                </div>
+            </div>
+            <div class="footer_list">
+                <div class="total_done">
+                    Total Done : 0
+                </div>
+
+                <button id="clear" class="btn btn-outline-danger">
+                    Clear All
+                </button>
+            </div>
+            <div class="total">
+                Total Todo : 0
+            </div>
+
+        </div>
+
+        <script src="./js/main.js"></script>
+    </body>
+</html>
