@@ -10,19 +10,39 @@ let form_group = document.querySelector('.form-group');
 let message = document.getElementById('message')
 let clear = document.getElementById('clear')
 let total_done = document.querySelector('.total_done')
+// =================local storage ========================
+let todoData =[];
+let mood = 'light';
+if(localStorage.getItem("toDo")){
+    todoData = JSON.parse(localStorage.getItem("toDo"))
+    todoData.forEach(i => {
+        list_todo.innerHTML += `<div class = "alert" style='color: white; background: #ffb200;'>
+        ${i}
+        <i class="fa-solid fa-trash-can float-end delete" style="color:red;"></i>
+        <i class="fa-solid fa-check float-end mx-3 check" style="color:#04ff00;"></i>
+        </div>`
+    });
+    if(localStorage.getItem("theam")){
+        mood = localStorage.getItem("theam")
+    }
+    applyChange()
+    check_alert()
+}
 // ================= Dark Mood ===========================
-let mood = 'dark'
-function change_theem(){
+function applyChange(){
     if(mood == 'dark'){
         todo.style.cssText = 'background-color:#333;color:white;';
         change_mood.classList.replace('fa-moon','fa-sun');
-        mood = 'light';
     }
     else{
         todo.style.cssText = null;
         change_mood.classList.replace('fa-sun','fa-moon');
-        mood = 'dark';
     }
+}
+function change_theem(){
+    mood = mood === 'light' ? 'dark' : 'light';
+    localStorage.setItem("theam",mood);
+    applyChange()
 }
 change_mood.addEventListener("click",change_theem);
 // ================= check alert in List =================
@@ -61,9 +81,11 @@ function add_todo(){
             <i class="fa-solid fa-trash-can float-end delete" style="color:red;"></i>
             <i class="fa-solid fa-check float-end mx-3 check" style="color:#04ff00;"></i>
             </div>`
-            big_list.style.background = `rgb(${randNumber1},${randNumber2},${randNumber3})`
-            input_value = ""
-            total_todo.innerHTML =`Total Todo : ${list_todo.childElementCount}`
+            big_list.style.background = `rgb(${randNumber1},${randNumber2},${randNumber3})`;
+            todo_input.value = "";
+            total_todo.innerHTML =`Total Todo : ${list_todo.childElementCount}`;
+            todoData.push(input_value)
+            localStorage.setItem("toDo",JSON.stringify(todoData))
             check_alert()
         }
 //======================== ADD Button ===============================
@@ -86,6 +108,7 @@ clear.addEventListener("click",()=>{
     let result = confirm('Are You Sure')
     if(result == true){
         list_todo.innerHTML = ""
+        message.innerHTML = ""
         total_todo.innerHTML =`Total Todo : ${list_todo.childElementCount}`
         total_done.innerHTML = `Total Done : ${document.querySelectorAll('.done').length}`
         check_alert()
